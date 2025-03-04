@@ -25,7 +25,8 @@ namespace Drops
                 var targetPosition = new Vector2(hitPosition.x, hitPosition.y - item.GetOnSurfaceOffset());
 
                 bool shakes = Vector2.Distance(item.transform.position, hitPosition) > itemDistanceToSurface;
-                
+
+                // drop item to target position with animation
                 item.transform.DOMove(targetPosition, itemDropDuration).OnComplete(() =>
                 {
                     item.FinishedDrop();
@@ -34,6 +35,7 @@ namespace Drops
                         item.transform.DOShakePosition(itemShakeDuration, new Vector3(0, itemShakeOffset, 0));
                 });
 
+                // set sorting order based on position
                 item.SetSortingOrder(Mathf.RoundToInt(-targetPosition.y * 10));
             }
         }

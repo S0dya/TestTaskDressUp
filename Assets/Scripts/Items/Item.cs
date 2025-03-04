@@ -31,6 +31,7 @@ namespace Items
             Init(itemInfo);
         }
 
+        // set item 
         public void Init(ItemInfo itemInfo)
         {
             spriteRenderer.sprite = itemInfo.Sprite;
@@ -64,8 +65,10 @@ namespace Items
         {
             spriteRenderer.sortingOrder = order;
         }
+
         public int GetSortingOrder() => spriteRenderer.sortingOrder;
 
+        // calculate offset for correct positioning on surface
         public float GetOnSurfaceOffset()
         {
             float spriteHeight = spriteRenderer.bounds.size.y;

@@ -25,6 +25,8 @@ namespace Surface
         {
             InitCamera();
         }
+
+        // initialize camera boundaries
         private void InitCamera()
         {
             if (!cam) cam = Camera.main;
@@ -47,17 +49,18 @@ namespace Surface
         {
             _currentIMover.Move(position);
         }
-        
+
         public void HandlePointerUp(Vector2 position)
         {
             _currentIMover.StopMoving(position);
 
             _dropAction?.Invoke();
-            
+
             _currentIMover = null;
             _dropAction = null;
         }
 
+        // determine if item or camera should be moved
         private void SetMover(Vector2 position, out Transform targetTransform)
         {
             var hits = Physics2D.OverlapPointAll(position);

@@ -27,6 +27,7 @@ namespace Movers
             _lastScreenPosition = screenPosition;
         }
 
+        // move camera based on input delta and camera reversed movement
         public void Move(Vector2 screenPosition)
         {
             if (!_currentTransform) return;
